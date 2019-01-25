@@ -1,27 +1,11 @@
 /*
-    Calculate the frequencies in an octave
+    Calculate the frequencies
     in an Equal Temperament scale
-    containing an arbitrary number of notes
-    between 1 and 24
+    containing an arbitrary number of tones
 */
 #include <stdio.h>
-#include <math.h>
-
-double* calculate(int notes, int midinote){
-  double frequency, ratio, c0, c5;
-
-  ratio = pow(2.0, 1.0/12.0);
-  c5 = 220.0 * pow(ratio, 3.0);
-  c0 = c5 * pow(0.5, 5);
-  ratio = pow(2.0, 1.0/notes);
-  frequency = c0 * pow(ratio, midinote);
-  double scale[notes];
-  for(int i = 0; i < notes; i++){
-    scale[i] = frequency * pow(ratio, i);
-    printf("%f\n", scale[i]);
-  }
-  return scale;
-}
+#include <stdlib.h>
+#include "scale.h"
 
 int main(int argc, char* argv[]){
 
@@ -44,6 +28,10 @@ int main(int argc, char* argv[]){
     return 1;
   }
 
-  calculate(notes, midinote);
+  double scale[notes];
+  compute_scale(notes, midinote, 0, (double*)&scale);
+  for(int i=0; i < notes; i++){
+    printf("%f\n", scale[i]);
+  }
   return 0;
 }
