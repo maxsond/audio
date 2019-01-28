@@ -106,7 +106,7 @@ int main(int argc, char* argv[]){
 
   double scale[notes];
   compute_scale(notes, start, arguments.midifreq, (double*)&scale);
-  if (arguments.output_file == "-") {
+  if (!strcmp(arguments.output_file, "-")) {
     for(int i=0; i < notes; i++){
       printf("%f\n", scale[i]);
     }

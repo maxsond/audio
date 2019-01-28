@@ -43,6 +43,7 @@ int freq2midi(double freq){
   fracmidi = log(freq / C0) / log(SEMITONE_RATIO);
   midinote = (int) (fracmidi + 0.5);
   printf("The nearest MIDI note to the frequency %.2f is %d\n", freq, midinote);
+  return 0;
 }
 
 int main(int argc, char *argv[]){
