@@ -27,7 +27,7 @@ int main(int argc, char** argv){
   angleincr = twopi * freq/srate;
   for(i = 0; i < nsamps; i++){
     samp = sin(angleincr * i);
-    fprintf(stdout, "%.8lf\n", samp);
+    fprintf(stdout, "%.8lf\t%.8lf\n", samp, samp*samp);
   }
   return 0;
 }
